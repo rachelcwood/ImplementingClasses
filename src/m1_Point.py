@@ -51,8 +51,11 @@ class Point(object):
         self.y = y
         self.coutmoves = self.coutmoves + 1
         self.distx = self.startx - x
+        print(self.distx)
         self.disty = self.starty - y
+        print(self.disty)
         self.distmove = (self.distx ** 2 + self.disty ** 2) ** .5
+        print(self.distmove)
         self.dist = self.dist + self.distmove
 
     def move_by(self, dx, dy):
