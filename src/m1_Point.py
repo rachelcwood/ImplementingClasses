@@ -38,6 +38,8 @@ class Point(object):
         self.dist = 0
         self.distx = 0
         self.disty = 0
+        self.distx1 = 0
+        self.disty1 = 0
         self.distmove = 0
 
     def __repr__(self):
@@ -47,16 +49,16 @@ class Point(object):
         return Point(self.x, self.y)
 
     def move_to(self, x, y):
+        self.coutmoves = self.coutmoves + 1
+        self.distx = self.x - x
+        # print(self.distx)
+        self.disty = self.y - y
+        # print(self.disty)
+        self.distmove = (self.distx ** 2 + self.disty ** 2) ** .5
+        # print(self.distmove)
+        self.dist = self.dist + self.distmove
         self.x = x
         self.y = y
-        self.coutmoves = self.coutmoves + 1
-        self.distx = self.startx - x
-        print(self.distx)
-        self.disty = self.starty - y
-        print(self.disty)
-        self.distmove = (self.distx ** 2 + self.disty ** 2) ** .5
-        print(self.distmove)
-        self.dist = self.dist + self.distmove
 
     def move_by(self, dx, dy):
         self.x = self.x + dx
@@ -76,9 +78,9 @@ class Point(object):
         return (self.distx ** 2 + self.disty ** 2) ** .5
 
     def get_distance_from_start(self):
-        self.distx = self.x - self.startx
-        self.disty = self.y - self.starty
-        return (self.distx ** 2 + self.disty ** 2) ** .5
+        self.distx1 = self.x - self.startx
+        self.disty1 = self.y - self.starty
+        return (self.distx1 ** 2 + self.disty1 ** 2) ** .5
 
     def get_distance_traveled(self):
         return self.dist
@@ -922,7 +924,7 @@ def run_test_get_distance_traveled():
         print('Actual:', p4.get_distance_traveled())
     """
     # ------------------------------------------------------------------
-    # TODO: 11.  Follow the same instructions as in TODO 3 above,
+    # DONE 11
     #    but for the  get_distance_traveled  method specified above.
     # ------------------------------------------------------------------
     print()
